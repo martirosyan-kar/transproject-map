@@ -113,7 +113,6 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-.container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
+.wrap > .container-fluid  {
+    padding: 50px 0px 0px;
 }
