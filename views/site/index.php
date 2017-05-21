@@ -20,6 +20,7 @@ $this->title = 'Trash Map';
     var uluru = {lat: 40.1555406, lng: 44.5457157};
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 7,
+      mapTypeId: 'terrain',
       center: uluru
     });
 
