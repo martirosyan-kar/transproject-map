@@ -19,8 +19,18 @@ $this->title = 'Trash Map';
   function initMap() {
     var uluru = {lat: 40.1555406, lng: 44.5457157};
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
+      zoom: 7,
       center: uluru
+    });
+
+    var ctaLayer1 = new google.maps.KmlLayer({
+      url: 'http://images.transproject.am/kml/ARARAT-lriv.kml',
+      map: map
+    });
+
+    var ctaLayer2 = new google.maps.KmlLayer({
+      url: 'http://images.transproject.am/kml/Armavir-Lriv.kml',
+      map: map
     });
   }
 </script>
