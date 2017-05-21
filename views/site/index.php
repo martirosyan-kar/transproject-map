@@ -12,6 +12,7 @@ $this->title = 'Trash Map';
         width: 100%;
     }
 </style>
+
 <div class="cols-xs-12">
     <div id="map"></div>
 </div>
@@ -21,7 +22,8 @@ $this->title = 'Trash Map';
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 7,
       mapTypeId: 'terrain',
-      center: uluru
+      center: uluru,
+      scrollwheel: false,
     });
 
     var ctaLayer1 = new google.maps.KmlLayer({
