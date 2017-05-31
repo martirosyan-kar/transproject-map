@@ -67,10 +67,10 @@ $this->title = 'Trash Map';
     function getContent(data) {
 
       return '<div id="content">'+
-        '<img class="map-image-max-size" src="'+data.image + '" />' +
         '<div id="bodyContent">'+
         '<p>' + data.description + '</p>'+
         '</div>'+
+        '<img class="map-image-max-size" src="'+data.image + '" />' +
         '</div>';
     }
   }
