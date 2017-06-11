@@ -33,15 +33,21 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $items = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+        //['label' => 'About', 'url' => ['/site/about']],
+        //['label' => 'Contact', 'url' => ['/site/contact']],
+    ];
+
+    if(Yii::$app->user->can('map.*')) {
+        $items [] = ['label' => 'Add Pin', 'url' => '/map/index'];
+    }
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-                /*
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+        'items' => array_merge($items, [
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/user/security/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
@@ -51,8 +57,9 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            ) */
-        ],
+            ),
+
+        ]),
     ]);
     NavBar::end();
     ?>

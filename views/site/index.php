@@ -13,30 +13,12 @@ $this->title = 'Trash Map';
     }
 </style>
 
-<div class="cols-xs-12">
-    <div id="map"></div>
-</div>
 <script>
   var data = <?= json_encode($data); ?>;
   var infowindow = null;
 
-  function initMap() {
-    var uluru = {lat: 40.1555406, lng: 44.5457157};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 8,
-      mapTypeId: 'satellite',
-      center: uluru,
-      scrollwheel: false
-    });
-
-    var pinIcon = new google.maps.MarkerImage(
-      "http://images.transproject.am/map/pin.png",
-      null, /* size is determined at runtime */
-      null, /* origin is 0,0 */
-      null, /* anchor is bottom center of the scaled image */
-      new google.maps.Size(36, 48)
-    );
-
+  function initMapData(map) {
+    var pinIcon = getActiveMarker();
     infowindow = new google.maps.InfoWindow();
 
     for (var i = 0; i < data.length; i++) {
@@ -54,30 +36,32 @@ $this->title = 'Trash Map';
             infowindow.close();
           }
 
-          infowindow.setContent(getContent(data));
+          infowindow.setContent(getInfoWindowContent(data));
           infowindow.open(map,marker);
         };
       })(marker,data[i],infowindow));
 
 
     }
-
-
-
-    function getContent(data) {
-
-      return '<div id="content">'+
-        '<div id="bodyContent">'+
-        '<p>' + data.description + '</p>'+
-        '</div>'+
-        '<img class="map-image-max-size" src="'+data.image + '" />' +
-        '</div>';
-    }
   }
 
+  function getInfoWindowContent(data) {
+
+    return '<div id="content">'+
+      '<div id="bodyContent">'+
+      '<p>' + data.description + '</p>'+
+      '</div>'+
+      '<img class="map-image-max-size" src="'+data.image + '" />' +
+      '</div>';
+  }
+
+  function initMap() {
+    var map = generateMap();
+    initMapData(map);
+  }
 
 </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJFP_x7Ux1gyyBJ7lxyWl6wexCmfRU8oI&callback=initMap">
-</script>
 
+<div class="cols-xs-12">
+    <?= $this->render('//public/_maps'); ?>
+</div>
