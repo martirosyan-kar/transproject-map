@@ -70,6 +70,16 @@ use yii\widgets\ActiveForm;
   function initMap() {
     var map = generateMap();
 
+    var data = <?= json_encode($model->getAttributes()); ?>;
+
+    var latLng =  {lat: +data.latitude, lng: +data.longitude};
+
+    var marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      icon: getActiveMarker()
+    });
+
     google.maps.event.addListener(map,'click', function(event) {
       placeMarker(event.latLng, map);
     });
