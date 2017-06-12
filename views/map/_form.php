@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
         <?= $this->render('//public/_maps'); ?>
     </div>
 
-    <?= $form->field($model, 'description')->textInput() ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => '10']) ?>
 
     <?= $form->field($model, 'image')->textInput() ?>
 
