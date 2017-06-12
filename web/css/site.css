@@ -92,7 +92,7 @@ a.desc:after {
 
 /* align the logout "link" (button in form) of the navbar */
 .nav li > form > button.logout {
-    padding: 15px;
+    padding: 30px;
     border: none;
 }
 
@@ -120,4 +120,40 @@ a.desc:after {
 .map-image-max-size {
     max-width: 400px;
     max-height: 300px;
+}
+
+.navbar {
+    min-height: 80px;
+}
+
+.navbar-brand {
+    padding: 0px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 23px;
+    padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        /* (80px - line-height of 27px) / 2 = 26.5px */
+        padding-top: 26.5px;
+        padding-bottom: 26.5px;
+        line-height: 27px;
+    }
+
+}
+
+.navbar-brand>img {
+    height: 100%;
+    padding: 10px;
+    width: auto;
+}
+
+ul.breadcrumb {
+    margin-top: 15px;
 }

@@ -27,10 +27,10 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Transproject',
+        'brandLabel' => Html::img('//images.transproject.am/logo-eng.png', ['alt'=>'Transproject','class'=>'logo']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
         ],
     ]);
     $items = [
@@ -63,11 +63,11 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
+    <div class="container-fluid">
     <?= Breadcrumbs::widget([
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
-    <div class="container-fluid">
+
 
 
     <?= $content ?>

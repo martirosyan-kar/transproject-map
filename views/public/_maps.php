@@ -20,9 +20,9 @@
     var uluru = {lat: 40.1555406, lng: 44.5457157};
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 8,
-      mapTypeId: 'satellite',
+      mapTypeId: 'hybrid',
       center: uluru,
-      scrollwheel: false,
+      scrollwheel: true,
       mapTypeControl: false,
       zoomControl: true,
       scaleControl: true,
@@ -35,13 +35,12 @@
   }
 
   function getActiveMarker () {
-    return new google.maps.MarkerImage(
-      "http://images.transproject.am/map/pin.png",
-      null, /* size is determined at runtime */
-      null, /* origin is 0,0 */
-      null, /* anchor is bottom center of the scaled image */
-      new google.maps.Size(36, 48)
-    );
+    return {
+      labelOrigin: new google.maps.Point(23, 30),
+      url: 'http://images.transproject.am/map/pin.png',
+      size: new google.maps.Size(23, 30),
+      scaledSize: new google.maps.Size(23, 30)
+    };
   }
 
   function getCleanedMarker() {
@@ -50,7 +49,7 @@
       null, /* size is determined at runtime */
       null, /* origin is 0,0 */
       null, /* anchor is bottom center of the scaled image */
-      new google.maps.Size(36, 48)
+      new google.maps.Size(23, 30)
     );
   }
 

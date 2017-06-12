@@ -17,6 +17,12 @@ $this->title = 'Trash Map';
   var data = <?= json_encode($data); ?>;
   var infowindow = null;
 
+  var labelObject =  {
+    color: 'white',
+    fontWeight: 'bold',
+    text: ''
+  };
+
   function initMapData(map) {
     var pinIcon = getActiveMarker();
     infowindow = new google.maps.InfoWindow();
@@ -27,7 +33,8 @@ $this->title = 'Trash Map';
       var marker = new google.maps.Marker({
         position: latLng,
         map: map,
-        icon: pinIcon
+        icon: pinIcon,
+        hoverContent: data[i].community
       });
 
       google.maps.event.addListener(marker, 'click', (function(marker,data,infowindow){
@@ -41,7 +48,15 @@ $this->title = 'Trash Map';
         };
       })(marker,data[i],infowindow));
 
+      google.maps.event.addListener(marker,'mouseover',function(e){
+          var label = labelObject;
+          label.text = this.get('hoverContent');
+          this.set('label', label);
+      });
 
+      google.maps.event.addListener(marker,'mouseout',function(e){
+        this.set('label', null);
+      });
     }
   }
 
