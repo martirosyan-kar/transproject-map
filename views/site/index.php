@@ -44,7 +44,11 @@ $this->title = 'Trash Map';
           }
 
           infowindow.setContent(getInfoWindowContent(data));
-          infowindow.open(map,marker);
+          setTimeout(function(){
+            infowindow.open(map,marker);
+          },300);
+
+          window.scrollTo(0, 0);
         };
       })(marker,data[i],infowindow));
 
@@ -62,7 +66,7 @@ $this->title = 'Trash Map';
 
   function getInfoWindowContent(data) {
 
-    return '<div id="content">'+
+    return '<div id="content" class="infoContent">'+
       '<div id="bodyContent">'+
       '<p>' + data.description + '</p>'+
       '</div>'+

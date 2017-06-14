@@ -157,3 +157,7 @@ a.desc:after {
 ul.breadcrumb {
     margin-top: 15px;
 }
+
+.infoContent {
+    height:300px;
+}
