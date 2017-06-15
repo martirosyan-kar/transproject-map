@@ -46,7 +46,7 @@
   function getCleanedMarker() {
     return {
       labelOrigin: new google.maps.Point(23, 30),
-      url: 'http://images.transproject.am/map/pin.png',
+      url: 'http://images.transproject.am/map/cleaned.png',
       size: new google.maps.Size(23, 30),
       scaledSize: new google.maps.Size(23, 30)
     };
