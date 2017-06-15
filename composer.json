@@ -21,7 +21,8 @@
         "fxp/composer-asset-plugin": "^1.3.1",
         "light/yii2-xmlparser": "*",
         "johnitvn/yii2-user-plus": "dev-master",
-        "johnitvn/yii2-rbac-plus": "dev-master"
+        "johnitvn/yii2-rbac-plus": "dev-master",
+        "bower-asset/bxslider-4": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

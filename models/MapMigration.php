@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "map_migration".
@@ -11,10 +12,12 @@ use Yii;
  * @property string $region
  * @property string $district
  * @property string $community
- * @property string $latitude
  * @property string $longitude
+ * @property string $latitude
  * @property string $description
  * @property string $image
+ * @property integer $cleaned
+ * @property string $cleaned_image
  */
 class MapMigration extends \yii\db\ActiveRecord
 {
@@ -32,8 +35,9 @@ class MapMigration extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['region', 'district', 'community', 'description', 'image'], 'string'],
-            [['latitude', 'longitude'], 'number'],
+            [['region', 'district', 'community', 'description', 'image', 'cleaned_image'], 'string'],
+            [['longitude', 'latitude'], 'number'],
+            [['cleaned'], 'integer'],
         ];
     }
 
@@ -47,10 +51,12 @@ class MapMigration extends \yii\db\ActiveRecord
             'region' => 'Region',
             'district' => 'District',
             'community' => 'Community',
-            'latitude' => 'Latitude',
             'longitude' => 'Longitude',
+            'latitude' => 'Latitude',
             'description' => 'Description',
             'image' => 'Image',
+            'cleaned' => 'Cleaned?',
+            'cleaned_image' => 'Cleaned Image',
         ];
     }
 }

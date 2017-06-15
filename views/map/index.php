@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create New Pin', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Map Migration', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,9 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'district',
             'community',
             'longitude',
-            'latitude',
+            // 'latitude',
             // 'description',
             // 'image',
+            // 'cleaned',
+            // 'cleaned_image',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

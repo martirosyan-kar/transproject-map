@@ -36,6 +36,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image')->textInput() ?>
 
+    <?= $form->field($model, 'cleaned')->checkbox() ?>
+
+    <?= $form->field($model, 'cleaned_image')->textInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

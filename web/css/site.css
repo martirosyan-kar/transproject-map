@@ -159,5 +159,32 @@ ul.breadcrumb {
 }
 
 .infoContent {
-    height:300px;
+    height: 300px;
+    min-width: 400px;
+    max-width: 650px;
+}
+
+.relative {
+    position: relative;
+}
+.region-filter {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 999;
+    display: block;
+    background-color: white;
+    padding: 20px;
+}
+
+ul.slides {
+    width: 650px;
+}
+.bx-controls {
+    width: 100%;
+}
+
+
+.bx-viewport {
+
 }

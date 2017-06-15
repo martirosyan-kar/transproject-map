@@ -44,13 +44,12 @@
   }
 
   function getCleanedMarker() {
-    return new google.maps.MarkerImage(
-      "http://images.transproject.am/map/pin.png",
-      null, /* size is determined at runtime */
-      null, /* origin is 0,0 */
-      null, /* anchor is bottom center of the scaled image */
-      new google.maps.Size(23, 30)
-    );
+    return {
+      labelOrigin: new google.maps.Point(23, 30),
+      url: 'http://images.transproject.am/map/pin.png',
+      size: new google.maps.Size(23, 30),
+      scaledSize: new google.maps.Size(23, 30)
+    };
   }
 
 </script>

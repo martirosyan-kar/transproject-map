@@ -18,8 +18,8 @@ class MapMigrationSearch extends MapMigration
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['region', 'district', 'community', 'description', 'image'], 'safe'],
+            [['id', 'cleaned'], 'integer'],
+            [['region', 'district', 'community', 'description', 'image', 'cleaned_image'], 'safe'],
             [['longitude', 'latitude'], 'number'],
         ];
     }
@@ -63,13 +63,15 @@ class MapMigrationSearch extends MapMigration
             'id' => $this->id,
             'longitude' => $this->longitude,
             'latitude' => $this->latitude,
+            'cleaned' => $this->cleaned,
         ]);
 
         $query->andFilterWhere(['like', 'region', $this->region])
             ->andFilterWhere(['like', 'district', $this->district])
             ->andFilterWhere(['like', 'community', $this->community])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'image', $this->image]);
+            ->andFilterWhere(['like', 'image', $this->image])
+            ->andFilterWhere(['like', 'cleaned_image', $this->cleaned_image]);
 
         return $dataProvider;
     }

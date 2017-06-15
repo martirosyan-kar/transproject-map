@@ -1,5 +1,6 @@
 <?php
-
+use app\assets\SlickAsset;
+SlickAsset::register($this);
 /* @var $this yii\web\View */
 
 $this->title = 'Trash Map';
@@ -24,11 +25,17 @@ $this->title = 'Trash Map';
   };
 
   function initMapData(map) {
-    var pinIcon = getActiveMarker();
     infowindow = new google.maps.InfoWindow();
 
     for (var i = 0; i < data.length; i++) {
       var latLng =  {lat: +data[i].latitude, lng: +data[i].longitude};
+
+      if(data[i].cleaned == 1) {
+        var pinIcon = getCleanedMarker();
+      }
+      else {
+        var pinIcon = getActiveMarker();
+      }
 
       var marker = new google.maps.Marker({
         position: latLng,
@@ -44,9 +51,14 @@ $this->title = 'Trash Map';
           }
 
           infowindow.setContent(getInfoWindowContent(data));
+          infowindow.open(map,marker);
+
+
           setTimeout(function(){
-            infowindow.open(map,marker);
-          },300);
+            $('#slides_'+data.id).bxSlider({
+              slideWidth: 450
+            });
+          },700);
 
           window.scrollTo(0, 0);
         };
@@ -65,13 +77,14 @@ $this->title = 'Trash Map';
   }
 
   function getInfoWindowContent(data) {
-
     return '<div id="content" class="infoContent">'+
       '<div id="bodyContent">'+
       '<p>' + data.description + '</p>'+
       '</div>'+
-      '<img class="map-image-max-size" src="'+data.image + '" />' +
-      '</div>';
+      '<ul id="slides_'+data.id+'" class="slides">' +
+      '<li><img class="map-image-max-size" src="'+data.image + '" /></li>' +
+      (data.cleaned == 1 ? '<li><img class="map-image-max-size" src="'+data.cleaned_image + '" /></li>' : '') +
+      '</ul></div>';
   }
 
   function initMap() {
