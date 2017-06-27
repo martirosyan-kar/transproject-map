@@ -33,6 +33,9 @@ $this->title = 'Trash Map';
       if(data[i].cleaned == 1) {
         var pinIcon = getCleanedMarker();
       }
+      else if (data[i].cleaned == 2) {
+        var pinIcon = getApprovedMarker();
+      }
       else {
         var pinIcon = getActiveMarker();
       }

@@ -40,7 +40,7 @@ AppAsset::register($this);
     ];
 
     if(Yii::$app->user->can('map.*')) {
-        $items [] = ['label' => 'Add Pin', 'url' => '/map/index'];
+        $items [] = ['label' => 'Pin Management', 'url' => '/map/index'];
     }
 
     echo Nav::widget([

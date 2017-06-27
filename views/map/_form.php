@@ -36,7 +36,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image')->textInput() ?>
 
-    <?= $form->field($model, 'cleaned')->checkbox() ?>
+    <?= $form->field($model, 'cleaned')->radio(['label' => 'Cleaned', 'value' => 1, 'uncheck' => null]) ?>
+
+    <?= $form->field($model, 'cleaned')->radio(['label' => 'Should be approved', 'value' => 2, 'uncheck' => null]) ?>
 
     <?= $form->field($model, 'cleaned_image')->textInput() ?>
 

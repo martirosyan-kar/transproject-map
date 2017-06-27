@@ -52,6 +52,15 @@
     };
   }
 
+  function getApprovedMarker() {
+    return {
+      labelOrigin: new google.maps.Point(23, 30),
+      url: 'http://images.transproject.am/map/approved.png',
+      size: new google.maps.Size(23, 30),
+      scaledSize: new google.maps.Size(23, 30)
+    };
+  }
+
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJFP_x7Ux1gyyBJ7lxyWl6wexCmfRU8oI&callback=initMap">
