@@ -117,10 +117,10 @@ $this->title = 'Trash Map';
 
   window.onload=function(){
     $('#searchButton').on('click',function() {
-      var val = $('#searchText').val();
+      var val = $('#searchText').val().toUpperCase();
       if(val.length > 2) {
         var newData = _.filter(data,function(row){
-          return row.region.indexOf(val) !== -1 || row.district.indexOf(val) !== -1 || row.community.indexOf(val) !== -1;
+          return row.region.toUpperCase().indexOf(val) !== -1 || row.district.toUpperCase().indexOf(val) !== -1 || row.community.toUpperCase().indexOf(val) !== -1;
         });
 
         initNewData(newData);
