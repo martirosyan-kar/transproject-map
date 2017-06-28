@@ -116,6 +116,13 @@ $this->title = 'Trash Map';
   }
 
   window.onload=function(){
+    $('#searchText').on('keyup',function(e) {
+      var code = (e.keyCode ? e.keyCode : e.which);
+      if (code==13) {
+        $('#searchButton').trigger('click');
+      }
+    });
+
     $('#searchButton').on('click',function() {
       var val = $('#searchText').val().toUpperCase();
       if(val.length > 2) {
