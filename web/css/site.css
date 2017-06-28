@@ -11,7 +11,7 @@ body {
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    padding: 100px 15px 20px;
 }
 
 .footer {
@@ -114,7 +114,7 @@ a.desc:after {
     outline: none;
 }
 .wrap > .container-fluid  {
-    padding: 70px 0px 0px;
+    padding: 110px 0px 0px;
 }
 
 .map-image-max-size {
@@ -184,7 +184,6 @@ ul.slides {
     width: 100%;
 }
 
-
-.bx-viewport {
-
+.input-group {
+    padding-bottom: 30px;
 }

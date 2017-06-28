@@ -1,6 +1,8 @@
 <?php
 use app\assets\SlickAsset;
+use app\assets\UnderscoreAsset;
 SlickAsset::register($this);
+UnderscoreAsset::register($this);
 /* @var $this yii\web\View */
 
 $this->title = 'Trash Map';
@@ -17,6 +19,8 @@ $this->title = 'Trash Map';
 <script>
   var data = <?= json_encode($data); ?>;
   var infowindow = null;
+  var markers = [];
+  var map;
 
   var labelObject =  {
     color: 'white',
@@ -24,7 +28,17 @@ $this->title = 'Trash Map';
     text: ''
   };
 
-  function initMapData(map) {
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  function initMapData(map, data) {
     infowindow = new google.maps.InfoWindow();
 
     for (var i = 0; i < data.length; i++) {
@@ -46,6 +60,8 @@ $this->title = 'Trash Map';
         icon: pinIcon,
         hoverContent: data[i].community
       });
+
+      markers.push(marker);
 
       google.maps.event.addListener(marker, 'click', (function(marker,data,infowindow){
         return function() {
@@ -91,11 +107,40 @@ $this->title = 'Trash Map';
   }
 
   function initMap() {
-    var map = generateMap();
-    initMapData(map);
+    map = generateMap();
+    initMapData(map, data);
+  }
+  function initNewData(data) {
+    clearMarkers();
+    initMapData(map,data);
   }
 
+  window.onload=function(){
+    $('#searchButton').on('click',function() {
+      var val = $('#searchText').val();
+      if(val.length > 2) {
+        var newData = _.filter(data,function(row){
+          return row.region.indexOf(val) !== -1 || row.district.indexOf(val) !== -1 || row.community.indexOf(val) !== -1;
+        });
+
+        initNewData(newData);
+      }
+      return false;
+    });
+  };
+
 </script>
+
+<div class="container">
+    <div class="input-group">
+        <input id="searchText" value="" class="form-control" type="text">
+        <span class="input-group-btn">
+               <button class="btn btn-default" id="searchButton">
+                   <span class="glyphicon glyphicon-search"></span>
+               </button>
+            </span>
+    </div>
+</div>
 
 <div class="cols-xs-12">
     <?= $this->render('//public/_maps'); ?>

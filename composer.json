@@ -22,7 +22,8 @@
         "light/yii2-xmlparser": "*",
         "johnitvn/yii2-user-plus": "dev-master",
         "johnitvn/yii2-rbac-plus": "dev-master",
-        "bower-asset/bxslider-4": "dev-master"
+        "bower-asset/bxslider-4": "dev-master",
+        "bower-asset/underscore": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

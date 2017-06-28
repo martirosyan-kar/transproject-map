@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "721191a625823fff3234095cccb77936",
+    "content-hash": "15e9f9301f9c6604f2b760980d0c95d6",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -245,52 +245,6 @@
             }
         },
         {
-            "name": "bower-asset/slick-carousel",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kenwheeler/slick.git",
-                "reference": "92c543900a9867551dff2c10e33296a977d6332c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kenwheeler/slick/zipball/92c543900a9867551dff2c10e33296a977d6332c",
-                "reference": "92c543900a9867551dff2c10e33296a977d6332c",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.7"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": [
-                    "slick/slick.js",
-                    "slick/slick.css",
-                    "slick/slick.less",
-                    "slick/slick.scss"
-                ],
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "node_modules",
-                    "bower_components",
-                    "test",
-                    "tests",
-                    "package.json",
-                    "index.html"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "the last carousel you'll ever need",
-            "keywords": [
-                "carousel",
-                "jquery",
-                "responsive"
-            ],
-            "time": "2017-06-02 06:45:18"
-        },
-        {
             "name": "bower-asset/typeahead.js",
             "version": "v0.11.1",
             "source": {
@@ -316,6 +270,45 @@
             "extra": {
                 "bower-asset-main": "dist/typeahead.bundle.js"
             }
+        },
+        {
+            "name": "bower-asset/underscore",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jashkenas/underscore.git",
+                "reference": "20e7c6e164085e832b6140acc690d6f66f7f6c63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jashkenas/underscore/zipball/20e7c6e164085e832b6140acc690d6f66f7f6c63",
+                "reference": "20e7c6e164085e832b6140acc690d6f66f7f6c63",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "underscore.js",
+                "bower-asset-ignore": [
+                    "docs",
+                    "test",
+                    "*.yml",
+                    "CNAME",
+                    "index.html",
+                    "favicon.ico",
+                    "CONTRIBUTING.md",
+                    ".*",
+                    "package.json",
+                    "karma.*"
+                ]
+            },
+            "keywords": [
+                "browser",
+                "client",
+                "functional",
+                "server",
+                "util"
+            ],
+            "time": "2017-05-26 16:15:52"
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -1639,6 +1632,52 @@
                 "parser"
             ],
             "time": "2016-10-30T11:50:56+00:00"
+        },
+        {
+            "name": "bower-asset/slick-carousel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kenwheeler/slick.git",
+                "reference": "92c543900a9867551dff2c10e33296a977d6332c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kenwheeler/slick/zipball/92c543900a9867551dff2c10e33296a977d6332c",
+                "reference": "92c543900a9867551dff2c10e33296a977d6332c",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "slick/slick.js",
+                    "slick/slick.css",
+                    "slick/slick.less",
+                    "slick/slick.scss"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests",
+                    "package.json",
+                    "index.html"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "the last carousel you'll ever need",
+            "keywords": [
+                "carousel",
+                "jquery",
+                "responsive"
+            ],
+            "time": "2017-06-02 06:45:18"
         },
         {
             "name": "codeception/base",
@@ -3929,8 +3968,8 @@
     "stability-flags": {
         "johnitvn/yii2-user-plus": 20,
         "johnitvn/yii2-rbac-plus": 20,
-        "bower-asset/slick-carousel": 20,
-        "bower-asset/bxslider-4": 20
+        "bower-asset/bxslider-4": 20,
+        "bower-asset/underscore": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
