@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "15e9f9301f9c6604f2b760980d0c95d6",
+    "content-hash": "4a06cf4152c14698ae935cd44236f123",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -53,6 +53,51 @@
                 "mobile-first",
                 "responsive",
                 "web"
+            ]
+        },
+        {
+            "name": "bower-asset/bootstrap-treeview",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jonmiles/bootstrap-treeview.git",
+                "reference": "542f57eab636e14417216e95fa7f7049bbf3d69f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jonmiles/bootstrap-treeview/zipball/542f57eab636e14417216e95fa7f7049bbf3d69f",
+                "reference": "542f57eab636e14417216e95fa7f7049bbf3d69f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": ">=3.0.0",
+                "bower-asset/jquery": ">=1.9.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/bootstrap-treeview.min.js",
+                    "dist/bootstrap-treeview.min.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "description": "Tree View for Twitter Bootstrap",
+            "keywords": [
+                "bootstrap",
+                "javascript",
+                "jquery",
+                "jquery-plugin",
+                "navigation",
+                "tree",
+                "tree-view",
+                "treeview",
+                "twitter"
             ]
         },
         {
@@ -3969,7 +4014,8 @@
         "johnitvn/yii2-user-plus": 20,
         "johnitvn/yii2-rbac-plus": 20,
         "bower-asset/bxslider-4": 20,
-        "bower-asset/underscore": 20
+        "bower-asset/underscore": 20,
+        "bower-asset/bootstrap-treeview": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

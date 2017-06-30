@@ -23,7 +23,8 @@
         "johnitvn/yii2-user-plus": "dev-master",
         "johnitvn/yii2-rbac-plus": "dev-master",
         "bower-asset/bxslider-4": "dev-master",
-        "bower-asset/underscore": "dev-master"
+        "bower-asset/underscore": "dev-master",
+        "bower-asset/bootstrap-treeview": "^1.2@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

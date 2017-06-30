@@ -1,8 +1,10 @@
 <?php
 use app\assets\SlickAsset;
 use app\assets\UnderscoreAsset;
+use app\assets\TreeAsset;
 SlickAsset::register($this);
 UnderscoreAsset::register($this);
+TreeAsset::register($this);
 /* @var $this yii\web\View */
 
 $this->title = 'Trash Map';
@@ -18,9 +20,11 @@ $this->title = 'Trash Map';
 
 <script>
   var data = <?= json_encode($data); ?>;
+  var hierarchy = <?= json_encode($hierarchy); ?>;
   var infowindow = null;
   var markers = [];
   var map;
+  var editPermission = '<?= Yii::$app->user->can('map.*'); ?>';
 
   var labelObject =  {
     color: 'white',
@@ -30,6 +34,41 @@ $this->title = 'Trash Map';
 
   function clearMarkers() {
     setMapOnAll(null);
+  }
+
+  function getTree() {
+    var data = [];
+    _.each(hierarchy, function(districts, region) {
+      var regionObject = {
+        text: region,
+        nodes: [],
+        state: {
+          checked: true,
+          expanded: false
+        }
+      };
+
+      _.each(districts, function(communities, district){
+        var districtObject = {
+          text:district,
+          nodes: [],
+          state: {
+            checked: true,
+          }
+        };
+        _.each(communities, function(community){
+          districtObject.nodes.push({
+            'text':community,
+            state: {
+              checked: true,
+            }
+          });
+        });
+        regionObject.nodes.push(districtObject);
+      });
+      data.push(regionObject);
+    });
+    return data;
   }
 
   function setMapOnAll(map) {
@@ -97,6 +136,7 @@ $this->title = 'Trash Map';
 
   function getInfoWindowContent(data) {
     return '<div id="content" class="infoContent">'+
+      ((editPermission === "1")?'<div><h4><a href="/map/update/' + data.id + '" target="_blank">Edit</a></h4></div>':'') +
       '<div id="bodyContent">'+
       '<p>' + data.description + '</p>'+
       '</div>'+
@@ -126,14 +166,79 @@ $this->title = 'Trash Map';
     $('#searchButton').on('click',function() {
       var val = $('#searchText').val().toUpperCase();
       if(val.length > 2) {
-        var newData = _.filter(data,function(row){
-          return row.region.toUpperCase().indexOf(val) !== -1 || row.district.toUpperCase().indexOf(val) !== -1 || row.community.toUpperCase().indexOf(val) !== -1;
-        });
-
-        initNewData(newData);
+        generatePinsBasedOnText(data,val);
       }
       return false;
     });
+
+    function generatePinsBasedOnText(data,val) {
+      var newData = _.filter(data,function(row){
+        return row.region.toUpperCase().indexOf(val) !== -1 || row.district.toUpperCase().indexOf(val) !== -1 || row.community.toUpperCase().indexOf(val) !== -1;
+      });
+      initNewData(newData);
+    }
+
+    function generatePinsBasedOnArray(data, array) {
+      var newData = _.filter(data, function(row) {
+        return array.indexOf(row.region.toUpperCase() + ' ' + row.district.toUpperCase() + ' ' + row.community.toUpperCase()) !== -1;
+      });
+      initNewData(newData);
+    }
+
+    var $checkableTree = $('#tree').treeview({
+        data: getTree(),
+        showIcon: false,
+        showCheckbox: true,
+        onNodeChecked: function(event, node) {
+          checkChildren(node);
+          filterMap();
+        },
+        onNodeUnchecked: function(event, node) {
+          unCheckParent(node);
+          unCheckChildren(node);
+          filterMap();
+        }
+      }
+    );
+
+    function checkChildren(node) {
+      if(node.nodes) {
+        _.each(node.nodes,function(childNode){
+          $checkableTree.treeview('checkNode',[childNode.nodeId, {silent: true}]);
+          checkChildren(childNode);
+        });
+      }
+    }
+
+    function unCheckParent(node) {
+      var parentNode = $checkableTree.treeview('getParent', node);
+      if(parentNode.state) {
+        $checkableTree.treeview('uncheckNode', [parentNode.nodeId, {silent: true}]);
+        unCheckParent(parentNode);
+      }
+    }
+
+    function unCheckChildren(node) {
+      if(node.nodes) {
+        _.each(node.nodes,function(childNode){
+          $checkableTree.treeview('uncheckNode',[childNode.nodeId, {silent: true}]);
+          unCheckChildren(childNode);
+        });
+      }
+    }
+
+    function filterMap() {
+      var checkedRows = $checkableTree.treeview('getChecked');
+      var textArray = _.map(checkedRows, function(node){
+        if(!node.nodes) {
+          var parentNode = $checkableTree.treeview('getParent', node);
+          var grandParentNode = $checkableTree.treeview('getParent', parentNode);
+          return grandParentNode.text.toUpperCase() + ' ' + parentNode.text.toUpperCase() + ' ' + node.text.toUpperCase();
+        }
+      });
+      generatePinsBasedOnArray(data,textArray);
+    }
+
   };
 
 </script>
@@ -149,6 +254,11 @@ $this->title = 'Trash Map';
     </div>
 </div>
 
-<div class="cols-xs-12">
+<div class="cols-xs-12" style="position: relative">
+    <div class="hidden-xs col-sm-6 col-md-3" style="position: absolute; z-index: 999; top: 20px; left: 20px;">
+        <div id="tree"></div>
+    </div>
     <?= $this->render('//public/_maps'); ?>
 </div>
+
+

@@ -59,4 +59,26 @@ class MapMigration extends \yii\db\ActiveRecord
             'cleaned_image' => 'Cleaned Image',
         ];
     }
+
+    public static function getDataAndHierarchy()
+    {
+        $data = MapMigration::find()->asArray()->all();
+        $hierarchy = [];
+        foreach($data as $value) {
+            $region = ucfirst(strtolower($value['region']));
+            if(!isset($hierarchy[$region])) {
+                $hierarchy[$region] = [];
+            }
+
+            $district = ucfirst(strtolower($value['district']));
+            if(!isset($hierarchy[$region][$district])) {
+                $hierarchy[$region][$district] = [];
+            }
+
+            $community = ucfirst(strtolower($value['community']));
+            $hierarchy[$region][$district][] = $community;
+        }
+
+        return ['data'=>$data,'hierarchy'=>$hierarchy];
+    }
 }

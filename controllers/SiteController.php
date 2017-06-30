@@ -61,8 +61,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $data = MapMigration::getDataAndHierarchy();
         return $this->render('index',[
-            'data'=> MapMigration::find()->asArray()->all()
+            'data'=> $data['data'],
+            'hierarchy' => $data['hierarchy']
         ]);
     }
 
