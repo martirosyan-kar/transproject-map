@@ -39,7 +39,7 @@ AppAsset::register($this);
         //['label' => 'Contact', 'url' => ['/site/contact']],
     ];
 
-    if(Yii::$app->user->can('map.*')) {
+    if(Yii::$app->user->can('map.index')) {
         $items [] = ['label' => 'Pin Management', 'url' => '/map/index'];
     }
 
