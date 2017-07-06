@@ -89,6 +89,9 @@ $this->title = 'Trash Map';
       else if (data[i].cleaned == 2) {
         var pinIcon = getApprovedMarker();
       }
+      else if (data[i].cleaned == 3) {
+        var pinIcon = getDumpsitesMarker();
+      }
       else {
         var pinIcon = getActiveMarker();
       }
@@ -142,7 +145,7 @@ $this->title = 'Trash Map';
       '</div>'+
       '<ul id="slides_'+data.id+'" class="slides">' +
       '<li><img class="map-image-max-size" src="'+data.image + '" /></li>' +
-      ((data.cleaned == 1 || data.cleaned == 2)? '<li><img class="map-image-max-size" src="'+data.cleaned_image + '" /></li>' : '') +
+      ((data.cleaned == 1 || data.cleaned == 2 || data.cleaned == 3)? '<li><img class="map-image-max-size" src="'+data.cleaned_image + '" /></li>' : '') +
       '</ul></div>';
   }
 

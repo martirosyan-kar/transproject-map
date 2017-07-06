@@ -40,6 +40,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cleaned')->radio(['label' => 'Should be approved', 'value' => 2, 'uncheck' => null]) ?>
 
+    <?= $form->field($model, 'cleaned')->radio(['label' => 'Main dumpsites', 'value' => 3, 'uncheck' => null]) ?>
+
     <?= $form->field($model, 'cleaned_image')->textInput() ?>
 
     <div class="form-group">
