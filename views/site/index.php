@@ -258,7 +258,7 @@ $this->title = 'Trash Map';
 </div>
 
 <div class="cols-xs-12" style="position: relative">
-    <div class="hidden-xs col-sm-6 col-md-3" style="position: absolute; z-index: 999; top: 20px; left: 20px;">
+    <div class="hidden-xs col-sm-6 col-md-2" style="position: absolute; z-index: 999; top: 20px; left: 20px;">
         <div id="tree"></div>
     </div>
     <?= $this->render('//public/_maps'); ?>

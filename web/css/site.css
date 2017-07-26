@@ -187,3 +187,7 @@ ul.slides {
 .input-group {
     padding-bottom: 30px;
 }
+
+.list-group {
+    font-size: 12px;
+}
